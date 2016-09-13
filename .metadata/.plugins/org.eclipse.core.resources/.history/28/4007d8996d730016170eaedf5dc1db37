@@ -1,0 +1,47 @@
+package com.example.androidtest;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.example.entity.Fruit;
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+public class ListViewActivity extends Activity {
+	
+	public ListView listView;
+	private String[] data = {"apple","banana","orange","xxxxx","yyyyy","zzzzz"};
+	private List<Fruit> fruistList = new ArrayList<Fruit>();
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.avtivity_listview);
+		listView = (ListView)findViewById(R.id.listView);
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(ListViewActivity.this, android.R.layout.simple_list_item_1,data);
+		listView.setAdapter(adapter);
+	}
+	
+	public void initFruits(){
+		Fruit apple = new Fruit("Apple",R.drawable.ic_launcher);
+		fruistList.add(apple);
+		Fruit orange = new Fruit("Orange",R.drawable.ic_launcher);
+		fruistList.add(orange);
+		Fruit banana = new Fruit("Banana",R.drawable.ic_launcher);
+		fruistList.add(banana);
+		Fruit xxx = new Fruit("Xxx",R.drawable.ic_launcher);
+		fruistList.add(xxx);
+		Fruit yyy = new Fruit("Yyy",R.drawable.ic_launcher);
+		fruistList.add(yyy);
+	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+}
